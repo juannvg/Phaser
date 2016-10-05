@@ -7,8 +7,10 @@ function preload() {
     game.load.image('ground', 'assets/platform.png');
     game.load.image('ground2', 'assets/platform2.png');
     game.load.image('star', 'assets/star.png');
+    game.load.image('orb', 'assets/orb-red.png');
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
     game.load.image('heaven','assets/heaven.png');
+    game.load.spritesheet('baddie','assests/baddie.png'32,48);
 
 }
 
@@ -87,7 +89,7 @@ function create() {
     //ledge.body.immovable = true;
 
     // The player and its settings
-    player = game.add.sprite(32, game.world.height - 110, 'dude');
+    player = game.add.sprite(32, game.world.height - 110, 'baddie');
 
     player.vidas=5;
 
@@ -130,14 +132,16 @@ function create() {
     for (var i = 0; i < 12; i++)
     {
         //  Create a star inside of the 'stars' group
-        var star = stars.create(i * 70, 64, 'star'); //i*70,0
-
+        //var star = stars.create(i * 70, 64, 'star'); //i*70,0
+        var orb = stars.create(i * 70, 64, 'orb'); //i*70,0
         //  Let gravity do its thing
-        star.body.gravity.y = 100;
+       // star.body.gravity.y = 100;
+        orb.body.gravity.y = 100;
 
         //  This just gives each star a slightly random bounce value
         //star.body.bounce.y = 0.7 + Math.random() * 0.2;
-        star.checkWorldBounds = true;
+        //star.checkWorldBounds = true;
+         orb.checkWorldBounds = true;
     }
      text="Vidas: "+player.vidas;
     board=game.add.text(game.world.width-150,30,text,style);
